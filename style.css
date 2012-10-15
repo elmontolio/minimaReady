@@ -1,0 +1,325 @@
+/*
+Theme Name: MinimaReady
+Theme URI: none yet.
+Description: minima. let's do something. with all you need to start.
+Version: 1.0
+Author: montolio
+Author URI: none yet.
+
+made with minima wp theme
+http://p.contraculto.com/minima
+minima is distributed under a GNU GPL v3 license.
+http://www.gnu.org/copyleft/gpl.html
+
+
+*MinimaReady tiene:
+	-page.php
+	-single.php
+	-archive.php
+	-functions.php
+	-Widgets en sidebar.php
+	-Cortador de excerpts en el functions (se usa así; <?php echo excerpt(60); ?> )
+	-Foto de fondo. se cambia en la carpeta img o en loa estilos del body en el style.css
+	-El jQuery 1.8 está instalado
+	-Otra onda en CSS.
+	-lo único que no me gusta es el verde del hover de los links.
+
+*/
+
+/*
+01: CSS Resets.
+02: Common and Specials.
+03: Wordpress Special tags.
+04: Basic Structure.
+05: Header.
+06: Main Content.
+	06.01: Comments.
+07: Sidebar.
+08: Footer.
+*/
+
+/* * * * * * * * * * * * * * * * * * * * 01: CSS Resets */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+/* * * * * * * * * * * * * * * * * * * * 02: Common and Specials. */
+
+strong	{ font-weight: bold; }
+.clear	{ clear: both; }
+
+a		{ color: olive; text-decoration: none; }
+a:hover	{ color: green; text-decoration: none; }
+
+h1 { margin-bottom: 5px; font-size: 27px; }
+h2 { margin-bottom: 5px; font-size: 22px; }
+h3 { margin-bottom: 5px; font-size: 15px; }
+/* * * * * * * * * * * * * * * * * * * * 03: WordPress Special Tags */
+
+.aligncenter	{ display: block; margin: 0 auto; }
+.alignleft		{ float: left; }
+.alignright		{ float: right; }
+.wp-caption 	{ margin: 10px; border: 1px solid #b6b6b6; background: #f3f3f3; padding-top: 4px; }
+.wp-caption img	{ }
+.wp-caption p.wp-caption-text	{ padding: 0 4px 5px; line-height: 17px; font-size: 11px; }
+
+/* * * * * * * * * * * * * * * * * * * *  04: Basic Structure. */
+
+body	{
+	margin: 20px;
+	background: url(img/fondo.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-align: center;
+	color: #CCC;
+	font-family: 'Bitstream Vera Sans ', 'Liberation Sans', 'Helvetica Neue', Arial, Verdana, sans-serif;
+}
+
+#wrapper	{
+	margin: 0 auto;
+	width: 960px;
+	text-align: left;
+}
+
+#header	{
+	margin-bottom: 20px;
+	width: 960px;
+	background:rgba(0,0,0,0.9);
+}
+
+#content	{
+	margin-bottom: 20px;
+	float: right;
+	width: 700px;
+	background:rgba(0,0,0,0.9);
+	padding:10px 15px;
+}
+
+#sidebar	{
+	float: left;
+	width: 210px;
+}
+
+#footer	{
+	clear: both;
+	width: 940px;
+	background:rgba(0,0,0,0.9);
+	padding: 10px;
+	text-align: right;
+	line-height: 15px;
+	font-size: 12px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * 05: Header. */
+
+#header_branding	{
+	width: 940px;
+	height: 100px;
+	padding: 10px;
+}
+
+#header_navigation	{
+	width: 940px;
+	padding: 10px;
+	text-align: right;
+	font-size: 10px;
+}
+
+#header_navigation ul {
+	padding:5px 0;
+}
+
+#header_navigation li	{
+	display: inline;
+	margin-left: 20px;
+	font-weight: bold;
+}
+
+/* * * * * * * * * * * * * * * * * * * * 06: Main Content. */
+
+.content_single	{
+	margin-bottom: 40px;
+	padding-bottom:20px;
+	border-bottom:1px ridge #333;
+	overflow:hidden;
+}
+
+.content_single_title	{
+}
+
+.content_single_title_meta	{
+	padding-bottom: 5px;
+	line-height: 11px;
+	font-size: 9px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.content_single_body	{
+	padding-top: 10px;
+	text-align: left;
+	line-height: 22px;
+	font-size: 13px;
+}
+
+.content_single_body p	{
+	margin-bottom: 15px;
+}
+.content_single_body p img {
+	margin:5px 10px 2px 0;
+}
+
+.content_single_body ul, .content_single_body ol	{
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+
+.content_single_body ul li	{
+	margin-bottom: 5px;
+	list-style-type: disc;
+}
+
+.content_single_body ol li	{
+	margin-bottom: 5px;
+	list-style-type: decimal;
+}
+
+.content_single blockquote	{
+	margin-left: 30px;
+	border-left: 2px solid #d97b00;
+	padding-left: 6px;
+	font-size: 14px;
+	font-style: italic;
+}
+
+#content_navigation	{
+	margin-top: 10px;
+}
+
+#content_navigation_older	{
+	float: left;
+	margin-bottom: 10px;
+}
+
+#content_navigation_newer	{
+	float: right;
+	margin-bottom: 10px;
+}
+
+/* * * * * * * * * * 06.01: Comments. */
+
+#comments	{
+	padding-bottom: 20px;
+}
+
+#comments_title	{
+	line-height: 18px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#comments_block	{
+}
+
+.comments_single	{
+	margin: 20px 0;
+	border: 1px solid #b6b6b6;
+	padding: 10px;
+}
+
+.comments_single_meta	{
+	margin-bottom: 10px;
+	font-size: 12px;
+}
+
+.comments_single_content	{
+	margin-top: 4px;
+	line-height: 16px;
+	font-size: 14px;
+}
+
+#comments_callforcomments	{
+	margin-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#comments_registereduser	{
+	margin-bottom: 10px;
+	font-size: 12px;
+}
+
+#comments label	{
+	display: inline-block;
+	margin-right: 10px;
+	width: 250px;
+	text-align: right;
+	font-size: 12px;
+}
+
+#comments input	{
+	margin-bottom: 10px;
+	width: 300px;
+	border: 1px solid #b7b7b7;
+}
+
+#comments textarea	{
+	margin: 0 0 10px 260px;
+	width: 300px;
+	height: 200px;
+	border: 1px solid #b7b7b7;
+}
+
+#comments input#submit	{
+	margin-left: 412px;
+	width: 150px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * 07: Sidebar. */
+
+.sidebar_single	{
+	margin-bottom: 20px;
+	background:rgba(0,0,0,0.9);
+	padding: 10px;
+	line-height: 16px;
+	font-size: 12px;
+}
+.sidebar_single	li {
+	margin:5px 0;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * 08: Footer */
+
+
+
+/* * * * * * * * * * * * * * * * * * * * 09: Single */
+
+.redes_single {text-align:center;}
+.redes_single li {display:inline; font-size:11px; margin:0 10px;}
+		/** esto es para ordenar los botones de las redes sociales.¡*/
+.redes_single li:nth-child(1) {position:relative; bottom:2px;}
+.redes_single li:nth-child(2) {position:relative; bottom:-1px;}
+.redes_single li:nth-child(3) {position:relative; bottom:-4px;}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * 10: Archive. */
+
+.archive_post_thumb {width:280px; height:140px; overflow:hidden; float:left; margin-right:7px;}
+.archive_post_excerpt {font-size:12px; line-height:22px;}
+
+
+
+
+
+
+
+
+
+
